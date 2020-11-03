@@ -16,12 +16,12 @@ object DataRepository {
     fun createRandomData(
         randomCreator: RandomCreator,
         typesArray: List<Class<*>>
-    ): List<Any>{
+    ): List<Any> {
         items.clear()
         val results = arrayListOf<Any>()
         countOfElements =
             getRandomCountOfElements()
-        for(i in 0 until countOfElements){
+        for (i in 0 until countOfElements) {
             val type = typesArray[getRandomIndex(
                 typesArray.size - 1
             )]
@@ -31,15 +31,15 @@ object DataRepository {
         return results
     }
 
-    private fun getRandomIndex(max: Int): Int = randomizer.nextInt(max+1)
+    private fun getRandomIndex(max: Int): Int = randomizer.nextInt(max + 1)
 
 
-    private fun getRandomCountOfElements(): Int{
+    private fun getRandomCountOfElements(): Int {
         val diff = MAX_ELEMENTS_COUNT - MIN_ELEMENTS_COUNT
-        return randomizer.nextInt(diff+1) + MIN_ELEMENTS_COUNT
+        return randomizer.nextInt(diff + 1) + MIN_ELEMENTS_COUNT
     }
 
-    fun getItem(position: Int): Any{
+    fun getItem(position: Int): Any {
         return items[position]
     }
 

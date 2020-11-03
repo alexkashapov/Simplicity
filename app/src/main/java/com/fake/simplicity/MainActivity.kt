@@ -51,23 +51,23 @@ class MainActivity : AppCompatActivity(),
     }
 
     override fun onBackPressed() {
-        if(supportFragmentManager.backStackEntryCount==0){
+        if (supportFragmentManager.backStackEntryCount == 0) {
             super.onBackPressed()
-        }
-        else{
+        } else {
             supportFragmentManager.popBackStackImmediate()
         }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if(item.itemId == android.R.id.home){
+        if (item.itemId == android.R.id.home) {
             onBackPressed()
         }
         return super.onOptionsItemSelected(item)
     }
 
     override fun openElementInfo(position: Int) {
-        supportFragmentManager.beginTransaction().replace(mBinding.container.id, ElementFragment()).addToBackStack("elementFragment").commit()
+        supportFragmentManager.beginTransaction().replace(mBinding.container.id, ElementFragment())
+            .addToBackStack("elementFragment").commit()
         elementViewModel.postElement(position)
     }
 }

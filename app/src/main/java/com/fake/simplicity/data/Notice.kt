@@ -1,6 +1,6 @@
 package com.fake.simplicity.data
 
-import java.util.Date
+import java.util.*
 
 
 data class Notice(

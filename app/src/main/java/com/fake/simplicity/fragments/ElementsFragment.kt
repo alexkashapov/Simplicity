@@ -8,12 +8,12 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.fake.simplicity.adapters.ElementsAdapter
-import com.fake.simplicity.viewmodels.ElementsViewModel
 import com.fake.simplicity.MainActivity
+import com.fake.simplicity.adapters.ElementsAdapter
 import com.fake.simplicity.databinding.FragmentElementsBinding
+import com.fake.simplicity.viewmodels.ElementsViewModel
 
-class ElementsFragment: Fragment() {
+class ElementsFragment : Fragment() {
 
     private lateinit var mBinding: FragmentElementsBinding
     private lateinit var elementsViewModel: ElementsViewModel
@@ -26,7 +26,7 @@ class ElementsFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        mBinding = FragmentElementsBinding.inflate(inflater,container,false)
+        mBinding = FragmentElementsBinding.inflate(inflater, container, false)
         initList()
         elementsViewModel = ViewModelProvider(requireActivity()).get(ElementsViewModel::class.java)
         elementsViewModel.elements.observe(requireActivity(), Observer {

@@ -10,10 +10,11 @@ import java.util.*
 import kotlin.reflect.full.declaredMemberProperties
 
 object ViewCreator {
-    fun createViews(context: Context, item: Any): List<TextView>{
+    fun createViews(context: Context, item: Any): List<TextView> {
         val result = arrayListOf<TextView>()
         item::class.declaredMemberProperties.forEach { member ->
-            val labelView = TextView(context, null,
+            val labelView = TextView(
+                context, null,
                 R.style.TextSecondary
             )
             labelView.text = Editable.Factory.getInstance().newEditable(member.name)

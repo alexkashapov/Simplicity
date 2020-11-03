@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.fake.simplicity.viewmodels.ElementViewModel
-import com.fake.simplicity.utils.creators.ViewCreator
 import com.fake.simplicity.databinding.FragmentElementBinding
+import com.fake.simplicity.utils.creators.ViewCreator
+import com.fake.simplicity.viewmodels.ElementViewModel
 
 class ElementFragment : Fragment() {
 
