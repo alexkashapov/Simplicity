@@ -1,7 +1,6 @@
 package com.fake.simplicity
 
 import android.os.Bundle
-import android.view.MenuItem
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -30,6 +29,7 @@ class MainActivity : AppCompatActivity(),
 
     private val elementsViewModel: ElementsViewModel by viewModels()
     private val elementViewModel: ElementViewModel by viewModels()
+    private var openedIndex = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,27 +45,34 @@ class MainActivity : AppCompatActivity(),
                 randomCreator,
                 listOf(Event::class.java, Move::class.java, Notice::class.java)
             )
+            openedIndex = -1
         }
         supportFragmentManager.beginTransaction().replace(mBinding.container.id, ElementsFragment())
             .commit()
+        if (savedInstanceState != null) {
+            openedIndex = savedInstanceState.getInt("POSITION", -1)
+            if (openedIndex >= 0) {
+                openElementInfo(openedIndex)
+            }
+        }
     }
 
     override fun onBackPressed() {
         if (supportFragmentManager.backStackEntryCount == 0) {
             super.onBackPressed()
         } else {
+            openedIndex = -1
             supportFragmentManager.popBackStackImmediate()
         }
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == android.R.id.home) {
-            onBackPressed()
-        }
-        return super.onOptionsItemSelected(item)
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putInt("POSITION", openedIndex)
+        super.onSaveInstanceState(outState)
     }
 
     override fun openElementInfo(position: Int) {
+        openedIndex = position
         supportFragmentManager.beginTransaction().replace(mBinding.container.id, ElementFragment())
             .addToBackStack("elementFragment").commit()
         elementViewModel.postElement(position)
