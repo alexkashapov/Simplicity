@@ -1,10 +1,11 @@
-package com.fake.simplicity
+package com.fake.simplicity.adapters
 
 import android.text.Editable
 import android.text.Html
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.fake.simplicity.utils.creators.DescriptionGenerator
 import com.fake.simplicity.databinding.ItemListElementBinding
 
 class ElementsAdapter<T : Any>(private val elementCallback: ElementCallback) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -49,7 +50,11 @@ class ElementsAdapter<T : Any>(private val elementCallback: ElementCallback) : R
                 callback.openElementInfo(adapterPosition)
             }
             binding.description.text = Editable.Factory.getInstance()
-                .newEditable(Html.fromHtml(DescriptionGenerator.generateDescription(item)))
+                .newEditable(Html.fromHtml(
+                    DescriptionGenerator.generateDescription(
+                        item
+                    )
+                ))
         }
     }
 

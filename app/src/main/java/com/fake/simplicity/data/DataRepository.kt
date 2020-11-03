@@ -1,7 +1,8 @@
-package com.fake.simplicity
+package com.fake.simplicity.data
 
 import com.fake.simplicity.utils.MAX_ELEMENTS_COUNT
 import com.fake.simplicity.utils.MIN_ELEMENTS_COUNT
+import com.fake.simplicity.utils.creators.RandomCreator
 import java.util.*
 
 object DataRepository {
@@ -18,9 +19,12 @@ object DataRepository {
     ): List<Any>{
         items.clear()
         val results = arrayListOf<Any>()
-        countOfElements = getRandomCountOfElements()
+        countOfElements =
+            getRandomCountOfElements()
         for(i in 0 until countOfElements){
-            val type = typesArray[getRandomIndex(typesArray.size-1)]
+            val type = typesArray[getRandomIndex(
+                typesArray.size - 1
+            )]
             randomCreator.createObject(type)?.also { results.add(it) }
         }
         items.addAll(results)

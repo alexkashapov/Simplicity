@@ -1,8 +1,9 @@
-package com.fake.simplicity
+package com.fake.simplicity.utils.creators
 
 import android.content.Context
 import android.text.Editable
 import android.widget.TextView
+import com.fake.simplicity.R
 import com.fake.simplicity.utils.toText
 import com.fake.simplicity.utils.toTimeText
 import java.util.*
@@ -12,7 +13,9 @@ object ViewCreator {
     fun createViews(context: Context, item: Any): List<TextView>{
         val result = arrayListOf<TextView>()
         item::class.declaredMemberProperties.forEach { member ->
-            val labelView = TextView(context, null, R.style.TextSecondary)
+            val labelView = TextView(context, null,
+                R.style.TextSecondary
+            )
             labelView.text = Editable.Factory.getInstance().newEditable(member.name)
             result.add(labelView)
             val valueView = TextView(context)

@@ -1,4 +1,4 @@
-package com.fake.simplicity
+package com.fake.simplicity.adapters
 
 interface ElementCallback {
     fun openElementInfo(position: Int)

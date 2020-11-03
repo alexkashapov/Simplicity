@@ -1,4 +1,4 @@
-package com.fake.simplicity
+package com.fake.simplicity.utils.creators
 
 import kotlin.reflect.full.declaredMemberProperties
 

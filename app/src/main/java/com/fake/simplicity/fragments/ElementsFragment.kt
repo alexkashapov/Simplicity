@@ -8,8 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.fake.simplicity.ElementsAdapter
-import com.fake.simplicity.ElementsViewModel
+import com.fake.simplicity.adapters.ElementsAdapter
+import com.fake.simplicity.viewmodels.ElementsViewModel
 import com.fake.simplicity.MainActivity
 import com.fake.simplicity.databinding.FragmentElementsBinding
 
@@ -36,7 +36,8 @@ class ElementsFragment: Fragment() {
     }
 
     private fun initList() {
-        mAdapter = ElementsAdapter<Any>(requireActivity() as MainActivity)
+        mAdapter =
+            ElementsAdapter<Any>(requireActivity() as MainActivity)
         val layoutManager = LinearLayoutManager(context)
         mBinding.elementsList.layoutManager = layoutManager
         mBinding.elementsList.adapter = mAdapter

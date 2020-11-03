@@ -1,4 +1,4 @@
-package com.fake.simplicity
+package com.fake.simplicity.utils.creators
 
 
 open class RandomCreator(private var mapTypes: Map<Class<out Any>, () -> Any> = hashMapOf()) {
